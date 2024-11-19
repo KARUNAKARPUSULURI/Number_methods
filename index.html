@@ -1,22 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    <div>
 
-    </div>
-    <h1 class="heading">Hi</h1>
+<body>
+    <!-- <div>
+
+    </div> -->
+    <!-- <h1 class="heading">Hi</h1>
     <h1 class="heading" style="display: none;">zzsfdz</h1>
     <h1 id="heading" style="display: none;">zzsfdz</h1>
-    <h1 id="heading" style="display: none;">zzsfdz</h1>
+    <h1 id="heading" style="display: none;">zzsfdz</h1> -->
+    <div class="table-container"></div>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Batch</th>
+                <th>Course</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Vishnu</td>
+                <td>22r</td>
+                <td>Full stack</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Vijay</td>
+                <td>22r</td>
+                <td>Full Stack</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
     <script>
-        const hello = document.getElementsByTagName("div")
+        const cl = console.log
+        const data = [
+            { id: 1, name: "Vishnu", batch: "22r", course: "Full Stack", isMockCleared: true, }, //row
+            { id: 2, name: "Sahasra", batch: "22r", course: "Full Stack", isMockCleared: true, }, //row
+            { id: 3, name: "Vijay", batch: "22r", course: "Full Stack", isMockCleared: true, }, //row
+            { id: 4, name: "Anusha", batch: "22r", course: "Full Stack", isMockCleared: true,},
+            { id: 5, name: "Sathwik", batch: "22r", course: "Full Stack",isMockCleared: true, },
+        ];
+        const tableContainer = document.querySelector(".table-container")
+        const table = document.createElement("table");
+        const thead = document.createElement("thead")
+        const tbody = document.createElement("tbody")
+        const tableHeadingRow = document.createElement("tr");
+        
+
+        const headers = [];
+        for(keys in data[0]){
+            headers.push(keys)
+        }
+
+        for(ele of headers){
+            const th = document.createElement("th")
+            th.textContent = ele[0].toUpperCase() + ele.slice(1) //karunakar =>K + ele.slice(1)
+            tableHeadingRow.appendChild(th)
+        }
+
+        for(objs of data){
+            const tableDataRows = document.createElement("tr")
+            for(key in objs){
+                const td = document.createElement("td")
+                td.textContent = objs[key]
+                tableDataRows.appendChild(td)
+            }
+            tbody.appendChild(tableDataRows)
+        }
+
+        thead.appendChild(tableHeadingRow);
+        table.appendChild(thead)
+        table.appendChild(tbody)
+
+        tableContainer.appendChild(table)
+
+
+        // ellipsis(...)
+        // const hello = document.getElementsByTagName("div");
         // hello.append("asdkj")
-        document.body.appendChild("hello")
+        // document.body.appendChild("hello")
         //accessing elements:- gebid, gebcl,gebtg,qs,
         //modifying elements:-innerhtml, textcontent, innertext
         //creating/adding element:- d.createElement("paragraph" )
@@ -38,6 +119,8 @@
         // h1.appendChild("span");
         // document.write("h1")
         // const a = "<strong>Hello</strong>"
+
     </script>
 </body>
+
 </html>
