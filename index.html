@@ -52,6 +52,7 @@
     </table>
     <script>
         const cl = console.log
+        console.dir(document)
         const data = [
             { id: 1, name: "Vishnu", batch: "22r", course: "Full Stack", isMockCleared: true, }, //row
             { id: 2, name: "Sahasra", batch: "22r", course: "Full Stack", isMockCleared: true, }, //row
@@ -80,8 +81,13 @@
         for(objs of data){
             const tableDataRows = document.createElement("tr")
             for(key in objs){
+                console.log(key)
                 const td = document.createElement("td")
-                td.textContent = objs[key]
+                if(key == "isMockCleared"){
+                        td.textContent = objs[key] ? "Cleared" : "Not Cleared"
+                    }else{
+                        td.textContent = objs[key]
+                    }
                 tableDataRows.appendChild(td)
             }
             tbody.appendChild(tableDataRows)
